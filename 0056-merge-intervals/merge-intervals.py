@@ -2,7 +2,6 @@ class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         # create a new list to add on the non-overlapping intervals 
         output = []
-        [[0,2], [1,4], [3,5]]
 
         # sort the array 
         intervals.sort(key = lambda x:x[0])
