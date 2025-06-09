@@ -1,17 +1,17 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        mapping = {')':'(', '}':'{', ']':'['}
+        characters = {')': '(', '}' :'{', ']' : '['}
 
-
-        for char in s:
-            if char in mapping:
-                # if stack is empty or
-                # if the last element of stack doesn't match the mapping return false
-                if not stack or stack[-1] != mapping[char]:
+        for i in s: 
+            if i in characters: #check if it is a closing parenthesis 
+                if not stack or stack[-1] != characters[i]:
                     return False 
                 stack.pop()
-            else:
-                stack.append(char)
 
-        return len(stack) == 0
+            else:
+                stack.append(i)
+        
+        return len(stack) == 0 
+
+            
