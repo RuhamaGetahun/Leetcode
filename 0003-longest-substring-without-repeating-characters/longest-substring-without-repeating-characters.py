@@ -14,7 +14,4 @@ class Solution:
 
         return max_string 
 
-
-    
-        
         
