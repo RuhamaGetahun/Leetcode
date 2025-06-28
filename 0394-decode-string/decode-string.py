@@ -2,23 +2,25 @@ class Solution:
     def decodeString(self, s: str) -> str:
         stack = []
 
+         # iterate through s and append it to the stack 
         for i in range(len(s)):
-            if s[i] != "]":
+            if s[i] != ']':
                 stack.append(s[i])
-            else:
-                substr = ""
-                while stack[-1] != "[":
-                    substr = stack.pop() + substr 
-                stack.pop()
+            else: # until we find a closing bracket 
 
-                k = ""
+                # then pop the previous string until opening bracket and add it to be a string 
+                char = ""
+                while stack[-1] != '[':
+                    char = stack.pop()+ char 
+                stack.pop() # then pop the opening braket 
+
+                key = ""
                 while stack and stack[-1].isdigit():
-                    k = stack.pop() + k 
-
-                stack.append(int(k) * substr)
+                    key = stack.pop() + key 
+                
+                stack.append(int(key) * char )  # multiply the string by the number and append back to the stack 
 
         return "".join(stack)
 
 
-
-    
+            
