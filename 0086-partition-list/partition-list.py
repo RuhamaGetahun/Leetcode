@@ -6,24 +6,20 @@ class ListNode:
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         less_dummy = ListNode()
-        less = less_dummy 
+        less = less_dummy
         greater_dummy = ListNode()
         greater = greater_dummy 
 
         current = head 
         while current:
             if current.val < x:
-                less.next = current 
+                less.next = current
                 less = current 
                 current = current.next 
             else:
                 greater.next = current 
-                greater = current
-                current = current.next
-
-        greater.next = None  # terminate the greater linked list last node   
+                greater = current 
+                current = current.next 
+        greater.next = None # Terminate the last node before joining them
         less.next = greater_dummy.next 
         return less_dummy.next 
-
-            
-        
