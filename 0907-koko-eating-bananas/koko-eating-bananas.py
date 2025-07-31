@@ -21,4 +21,4 @@ class Solution:
                 # Rate is sufficient, try slower rate
                 right = mid
                 
-        return left
+        return right # can return right or left both would work 
