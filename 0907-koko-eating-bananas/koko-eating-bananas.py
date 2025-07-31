@@ -6,7 +6,7 @@ class Solution:
             for i in range(len(piles)):
                 # Ceiling division: (apples[i] + rate - 1) // rate
                 time += (piles[i] + rate - 1) // rate 
-            return time
+            return time <= h 
 
         # Binary search bounds: minimum rate = 1, maximum rate = max apples
         left, right = 1, max(piles)
@@ -14,11 +14,9 @@ class Solution:
         # Binary search for minimum valid harvest rate
         while left < right:
             mid = (left + right) // 2
-            if time_taken(mid) > h:
-                # Rate too slow, need faster rate
-                left = mid + 1
+            if time_taken(mid):
+                right = mid 
             else:
-                # Rate is sufficient, try slower rate
-                right = mid
-                
-        return right # can return right or left both would work 
+                left = mid + 1 
+        return right # or left goth works 
+       
