@@ -5,31 +5,31 @@ class ListNode:
         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        #checks out if the linked list doesn't have anything or just one
+        #edge cases like 
         if not head or not head.next:
             return True 
 
-         # find the middle node
-        fast = head 
-        slow = head 
+        # get the middle 
+        slow, fast = head, head 
         while fast and fast.next:
             slow = slow.next 
-            fast = fast.next.next
+            fast = fast.next.next 
 
-        # reverse the last half of the linked list 
+        # reverse the other half 
         prev = None 
         current = slow 
         while current:
             next_ = current.next 
             current.next = prev 
-            prev = current 
-            current = next_ 
+            prev, current = current, next_ 
 
+        # check if it is palindrome 
         first = head 
-        tail = prev 
-        while tail: # only needs to check half
-            if first.val != tail.val:
+        last = prev 
+        while last:
+            if first.val != last. val:
                 return False 
-            first= first.next 
-            tail = tail.next 
+            first = first.next 
+            last = last.next 
+
         return True  
