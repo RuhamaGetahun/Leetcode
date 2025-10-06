@@ -1,16 +1,11 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        #hash-maps 
+        l, r = 0, len(nums) - 1
+        res = {}
 
-        for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    return [i,j]
-                
-
-
-    
-
-
-
-
-         
+        for i, num in enumerate(nums):
+            complement = target - num
+            if complement in res:
+                return [res[complement], i]
+            res[num] = i  # store num we have already seen.. 
